@@ -81,11 +81,11 @@ function App() {
       <div className="Authoring">
         <div className="Content">
           <h3>Content</h3>
-          <textarea className="Editor" value={content} onChange={e=>setContent(e)}></textarea >
+          <textarea className="Editor" value={content} onChange={e=>setContent(e.target.value)}></textarea >
         </div>
         <div className="Style">
           <h3>Style</h3>
-          <textarea className="Editor" value={style} onChange={e=>setStyle(e)}></textarea >
+          <textarea className="Editor" value={style} onChange={e=>setStyle(e.target.value)}></textarea >
         </div>
       </div>
       <div className="Display">
