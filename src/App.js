@@ -1,6 +1,6 @@
 import './App.css';
 import * as React from 'react'
-import {WritersMark, StyleProvider} from 'writers-mark-react'
+import {WritersMark, StyleProvider, ContextProvider} from 'writers-mark-react'
 
 const defaultText = `#
 Welcome to Writer's Mark!
@@ -9,6 +9,8 @@ Welcome to Writer's Mark!
 Introduction
 
 It's kinda like markdown, but a lot more flexible. It's also a lot safer, since arbitrary HTML cannot be injected, and links are prohibited. Feel free to poke around the text and/or the style to see what you can do!
+
+Only CSS properties that have been explicitely whitelisted are available. For this demo, you can use: +font-size+, +font-family+, +color+, +background-color+ or +margin+
 
 ##
 Examples:
@@ -36,7 +38,7 @@ para __aside__ {
   margin-left: 64px;
   font-family: monospace;
 }
----`
+---`;
 
 const defaultStyle = `para # {
   font-size: 1.5em;
@@ -55,13 +57,18 @@ para !sample_para_rule! {
   background-color: black;
   color: white;
 }
+
 span * {
   font-weight:bold;
 }
 
+span + {
+  font-family: monospace;
+}
+
 span [i] [/i] {
   font-style: italic;
-}`
+}`;
 
 function App() {
   const [content, setContent] = React.useState(defaultText);
@@ -73,6 +80,9 @@ function App() {
   const tmpb = (a)=>{
     setStyle(a)
   }
+
+  const cssProps = ["color", 'font-size', 'font-family', 'color', 'background-color', 'margin']
+
   return (
     <div className="App">
       <div className="Authoring">
@@ -88,9 +98,11 @@ function App() {
         </div>
       </div>
       <div className="Display">
-        <StyleProvider text={style}>
-          <WritersMark text={content}/>
-        </StyleProvider>
+        <ContextProvider options={{whitelist: {para: cssProps, span: cssProps, cont: cssProps}}}>
+          <StyleProvider text={style}>
+            <WritersMark text={content}/>
+          </StyleProvider>
+        </ContextProvider>
       </div>
       
     </div>
