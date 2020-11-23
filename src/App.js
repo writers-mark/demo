@@ -10,7 +10,7 @@ Introduction
 
 It's kinda like markdown, but a lot more flexible. It's also a lot safer, since arbitrary HTML cannot be injected, and links are prohibited. Feel free to poke around the text and/or the style to see what you can do!
 
-Only CSS properties that have been explicitely whitelisted are available. For this demo, you can use: +font-size+, +font-family+, +color+, +background-color+ or +margin+
+Only CSS properties that have been explicitely whitelisted are available. For this demo, you can use: +font-size+, +font-family+, +font-style'+, +color+, +background-color+, +margin+ or +margin-left+
 
 ##
 Examples:
@@ -26,7 +26,7 @@ You can style a paragraph by prepending it with the name of a "para" rule.
 
 You can style span of text, like *this* by wrapping them around a span rule's name.
 
-Alternatively, span rules can have [i]Different beginning and ends[/i].
+Alternatively, span rules can have [i]different beginning and ends[/i].
 
 __aside__
 Styles can also be added directly in the text (at the top or bottom of the document).
@@ -74,27 +74,18 @@ function App() {
   const [content, setContent] = React.useState(defaultText);
   const [style, setStyle] = React.useState(defaultStyle);
 
-  const tmp = (a)=>{
-    setContent(a)
-  }
-  const tmpb = (a)=>{
-    setStyle(a)
-  }
-
-  const cssProps = ["color", 'font-size', 'font-family', 'color', 'background-color', 'margin']
+  const cssProps = ["color", 'font-size', 'font-family', 'font-style', 'color', 'background-color', 'margin', 'margin-left']
 
   return (
     <div className="App">
       <div className="Authoring">
         <div className="Content">
           <h3>Content</h3>
-          <textarea className="Editor" value={content} onChange={
-            e=>tmp(e.target.value)
-          }></textarea >
+          <textarea className="Editor" value={content} onChange={e=>setContent(e)}></textarea >
         </div>
         <div className="Style">
           <h3>Style</h3>
-          <textarea className="Editor" value={style} onChange={e=>tmpb(e.target.value)}></textarea >
+          <textarea className="Editor" value={style} onChange={e=>setStyle(e)}></textarea >
         </div>
       </div>
       <div className="Display">
