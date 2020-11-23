@@ -10,13 +10,13 @@ Introduction
 
 It's kinda like markdown, but a lot more flexible. It's also a lot safer, since arbitrary HTML cannot be injected, and links are prohibited. Feel free to poke around the text and/or the style to see what you can do!
 
-Only CSS properties that have been explicitely whitelisted are available. For this demo, you can use: +font-size+, +font-family+, +font-style'+, +color+, +background-color+, +margin+ or +margin-left+
+Only CSS properties that have been explicitly whitelisted are available. For this demo, you can use: +font-size+, +font-family+, +font-style'+, +color+, +background-color+, +margin+ or +margin-left+
 
 ##
 Examples:
 
 Paragraphs are blocks of text.
-They can be written accross multiple lines
+They can be written across multiple lines
 or on one single long line. 
 
 An empty line of text separates paragraphs
