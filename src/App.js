@@ -74,7 +74,7 @@ function App() {
   const [content, setContent] = React.useState(defaultText);
   const [style, setStyle] = React.useState(defaultStyle);
 
-  const cssProps = ["color", 'font-size', 'font-family', 'font-style', 'color', 'background-color', 'margin', 'margin-left']
+  const cssProps = ["color", 'text-align', 'font-size', 'font-family', 'font-style', 'color', 'background-color', 'margin', 'margin-left']
 
   return (
     <div className="App">
